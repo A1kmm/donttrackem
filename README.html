@@ -1,0 +1,78 @@
+<html>
+  <head><script type="text/javascript" src="donttrackem.min.js"></script>
+        <title>donttrackem - protect your users from being tracked by ad networks</title></body>
+        <style type="text/css">
+body { background-color: #ccc; }
+#content { float: left; width: 600px; border: solid grey 1px; padding: 10px; background-color: #ddd; }
+#wrapper { width: 100%; }
+#floatleft { width: 10%; float: left; }
+pre { margin-left: 20px; color: blue; }
+        </style>
+  <body onload="optOutOfAll()">
+<div id="wrapper">
+<div id="floatleft">&nbsp;</div>
+<div id="content">
+    <h1>Quick start</h1>
+<p>
+  All you need to do is add this to the HTML you serve to your visitors:
+  <pre>
+&lt;script type="text/javascript" src="donttrackem.min.js"&gt;&lt;/script&gt;</pre>
+In your Javascript, after the page is loaded, you need to call <b>optOutOfAll()</b> - if you don't have any other Javascript, you can just put onload="optOutOfAll()" as an attribute on the &lt;body&gt; tag.</p>
+    <h1>How it works</h1>
+<p>
+  Advertisers put advertising on users' pages by asking content providers to include their script, image, or iframe tags in a page; the end result is that when a user visits the site hosting the content, they also make requests to servers owned by the advertising network. These servers will often set a cookie to track the user; this allows large advertising networks to see the pattern of sites a user visits and is served advertisements on.
+</p>
+<p>
+  There has been talk for a long time of regulatory measures to stop tracking, or provide a mandatory opt-out ability. To prevent this, many advertising networks provide a mechanism to allow users to opt-out from being tracked, so they can say 'look, we are self-regulating, there is no need to pass any laws'.
+</p>
+<p>
+  Many users don't know that they are being tracked, so won't know to opt-out. This is where donttrackme comes in. Donttrackme is a small Javascript file you can include in your website to ensure that anyone who visits your website won't be tracked by certain advertising networks. It works by using the opt-out mechanism on a long list of sites. Your users don't need to do anything; many of them won't notice any difference, because they didn't know they were being tracked before, but you will be doing your bit behind the scenes to protect their privacy.
+</p>
+<p>
+  donttrackem firstly loads an image (which is not displayed to the user, so is invisible) off an advertising network site which changes size to indicate if a user has already blocked tracking for that site. If they have, donttrackem assumes it doesn't need to do anything, and it stops there. This helps save bandwidth for repeat visitors to your site.
+</p>
+<p>
+  If the user doesn't already have tracking blocked for that network, it puts an image with the URL for disabling tracking for 141 different networks, again not visible to your user (except perhaps as sites loading in the status bar). These images load quietly in the background, usually without interfering with the experience of your site at all (it may slow down loading your images slightly; you could wait until your site has loaded before calling optOutOfAll() if this is likely to be a problem).
+</p>
+
+<h1>Q&amp;A</h1>
+<dl>
+  <dd><strong>Won't this discourage networks from providing an opt-out feature?</strong></dd>
+  <dt>Probably not, because they are doing this to reduce the chances of being regulated.</dt>
+</dl>
+<dl>
+  <dd><strong>Could advertising networks block this?</strong></dd>
+  <dt>There are several ways they could stop this script from working if they really wanted to. It would probably be a lot harder to re-enable tracking for your users who are already opted out, however, if they can't separate them from people who deliberately opted out. This is a good reason to encourage as many sites as possible to deploy the script.</dt>
+</dl>
+<dl>
+  <dd><strong>How many networks are blocked?</strong></dd>
+  <dt>141.</dt>
+</dl>
+<dl>
+  <dd><strong>What about other networks?</strong></dd>
+  <dt>Unfortunately, other networks will still be able to track your users; tell your legislators to enact stronger privacy laws.</dt>
+</dl>
+<dl>
+  <dd><strong>Is there any guarantee or warranty?</strong></dd>
+  <dt>TO THE MAXIMUM EXTENT PERMISSIBLE UNDER APPLICABLE LAW, DONTTRACKEM COMES WITH NO WARRANTY OF ANY FORM WHATSOEVER, NOT EVEN A GUARANTEE OF FITNESS FOR PURPOSE.</dt>
+</dl>
+<dl>
+  <dd><strong>What is the license / Copyright situation for donttrackem?</strong></dd>
+  <dt>The author irrevocably places this work in the public domain, or where that is not possible, grants a license to use, modify, and distribute it for any purpose.</dt>
+</dl>
+<dl>
+  <dd><strong>Could advertising networks use this to track my users?</strong></dd>
+  <dt>If they wanted to be really evil, and use an anti-tracking opt-out URL as a tracking mechanism, then yes. However, we picked one advertising network ('AdBrite') as an indicator to let the script know if it has already been run; this will get a hit every page load, while all other networks should only get one hit per user ever.</dt>
+</dl>
+<dl>
+  <dd><strong>Can advertising networks use this script to display advertising on my pages without my permission?</strong></dd>
+  <dt>No (save by exploiting a browser bug, anyway), because only images are loaded from their sites.</dt>
+</dl>
+<dl>
+  <dd><strong>What files make up donttrackem?</strong></dd>
+  <dt>This file, README.html. donttrackem.js, containing the source. donttrackem.min.js, containing the minified source (the best one to include).</dt>
+</dl>
+</div>
+</div>
+  </body>
+</html>
